@@ -1,0 +1,37 @@
+# Project: Pokemon
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o treinador.o ginasio.o pokemon.o
+LINKOBJ  = main.o treinador.o ginasio.o pokemon.o
+LIBS     = -L"C:/ProgramFiles/Dev-Cpp/MinGW64/lib" -L"C:/ProgramFiles/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"C:/ProgramFiles/Dev-Cpp/MinGW64/include" -I"C:/ProgramFiles/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/ProgramFiles/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/ProgramFiles/Dev-Cpp/MinGW64/include" -I"C:/ProgramFiles/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/ProgramFiles/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/ProgramFiles/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = Pokemon.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+treinador.o: treinador.c
+	$(CC) -c treinador.c -o treinador.o $(CFLAGS)
+
+ginasio.o: ginasio.c
+	$(CC) -c ginasio.c -o ginasio.o $(CFLAGS)
+
+pokemon.o: pokemon.c
+	$(CC) -c pokemon.c -o pokemon.o $(CFLAGS)
